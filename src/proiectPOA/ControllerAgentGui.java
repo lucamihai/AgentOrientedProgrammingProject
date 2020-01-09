@@ -6,21 +6,20 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
-import javax.swing.table.*;
 import javax.swing.border.*;
 
-import jade.core.*;
 import jade.gui.*;
 
 
 public class ControllerAgentGui extends JFrame implements ActionListener {
 // -----------------------------------------------------------------------
 
-   private JList list;
-   private DefaultListModel listModel;
-   private JComboBox locations;
-   private JButton newAgent, move, clone, cloneToAll, kill, quit;
-   private ControllerAgent myAgent;
+	private static final long serialVersionUID = 1L;
+	private JList list;
+	private DefaultListModel listModel;
+	private JComboBox locations;
+	private JButton newAgent, move, clone, cloneToAll, kill, quit;
+	private ControllerAgent myAgent;
 
    public ControllerAgentGui(ControllerAgent a, Set s) {
 // -------------------------------------------------------

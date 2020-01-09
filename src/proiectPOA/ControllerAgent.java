@@ -2,41 +2,38 @@ package proiectPOA;
 
 
 import java.util.*;
-import java.io.*;
-
 import jade.lang.acl.*;
 import jade.content.*;
 import jade.content.onto.basic.*;
-import jade.content.lang.*;
 import jade.content.lang.sl.*;
 import jade.core.*;
-import jade.core.behaviours.*;
-import jade.domain.*;
 import jade.domain.mobility.*;
 import jade.domain.JADEAgentManagement.*;
 import jade.gui.*;
 
 
 public class ControllerAgent extends GuiAgent {
+
+	
+	private static final long serialVersionUID = 1L;
 // --------------------------------------------
 
-   private jade.wrapper.AgentContainer home;
-   private jade.wrapper.AgentContainer[] container = null;
-   private Map locations = new HashMap();
-   private Vector agents = new Vector();
-   private int agentCnt = 0;
-   private int command;
-   transient protected ControllerAgentGui myGui;
+	private jade.wrapper.AgentContainer home;
+	private jade.wrapper.AgentContainer[] container = null;
+	private Map<String, Location> locations = new HashMap<String, Location>();
+	private Vector<String> agents = new Vector<String>();
+	private int agentCnt = 0;
+	private int command;
+	transient protected ControllerAgentGui myGui;
 
-   public static final int QUIT = 0;
-   public static final int NEW_AGENT = 1;
-   public static final int MOVE_AGENT = 2;
-   public static final int CLONE_AGENT = 3;
-   public static final int CLONE_AGENT_TO_ALL = 4;
-   public static final int KILL_AGENT = 5;
+	public static final int QUIT = 0;
+	public static final int NEW_AGENT = 1;
+	public static final int MOVE_AGENT = 2;
+	public static final int CLONE_AGENT = 3;
+	public static final int CLONE_AGENT_TO_ALL = 4;
+	public static final int KILL_AGENT = 5;
 
-   // Get a JADE Runtime instance
-   jade.core.Runtime runtime = jade.core.Runtime.instance();
+	jade.core.Runtime runtime = jade.core.Runtime.instance();
 
    protected void setup() {
 // ------------------------
@@ -118,7 +115,7 @@ public class ControllerAgent extends GuiAgent {
 	  if (command == MOVE_AGENT) {
 
          String destName = (String)ev.getParameter(1);
-         Location dest = (Location)locations.get(destName);
+         Location dest = locations.get(destName);
          MobileAgentDescription mad = new MobileAgentDescription();
          mad.setName(aid);
          mad.setDestination(dest);
@@ -130,18 +127,6 @@ public class ControllerAgent extends GuiAgent {
 
          String destName = (String)ev.getParameter(1);
          Location dest = (Location)locations.get(destName);
-         
-         /*
-         MobileAgentDescription mad = new MobileAgentDescription();
-         mad.setName(aid);
-         mad.setDestination(dest);
-         String newName = "Clone-"+agentName;
-         CloneAction ca = new CloneAction();
-         ca.setNewName(newName);
-         ca.setMobileAgentDescription(mad);
-         sendRequest(new Action(aid, ca));
-         agents.add(newName);
-         */
          
          CloneAgent(agentName, aid, dest, "Clone-" + agentName);
          
@@ -194,4 +179,4 @@ public class ControllerAgent extends GuiAgent {
        agents.add(newAgentName);
    }
 
-}//class Controller
+}

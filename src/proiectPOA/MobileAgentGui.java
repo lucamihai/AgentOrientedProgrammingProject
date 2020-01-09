@@ -2,19 +2,17 @@ package proiectPOA;
 
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
-
-import jade.gui.*;
 
 
 public class MobileAgentGui extends JFrame {
 // -----------------------------------------
 
-   private JTextField location;
-   private JTextField info;
-   private MobileAgent myAgent;
+	private static final long serialVersionUID = 1L;
+	private JTextField location;
+	private JTextField info;
+	private MobileAgent myAgent;
 
    public MobileAgentGui(MobileAgent a) {
 // --------------------------------------

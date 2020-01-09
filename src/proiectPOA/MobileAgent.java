@@ -1,17 +1,12 @@
 package proiectPOA;
 
 
-import java.util.*;
-import java.io.*;
-
 import jade.core.*;
 import jade.core.behaviours.*;
 import jade.lang.acl.*;
 import jade.content.*;
-import jade.content.lang.*;
 import jade.content.lang.sl.*;
 import jade.content.onto.basic.*;
-import jade.domain.*;
 import jade.domain.mobility.*;
 import jade.domain.JADEAgentManagement.*;
 import jade.gui.*;
@@ -94,7 +89,9 @@ public class MobileAgent extends GuiAgent {
    class ReceiveCommands extends CyclicBehaviour {
 // -----------------------------------------------
 
-      ReceiveCommands(Agent a) { super(a); }
+	private static final long serialVersionUID = 1L;
+
+	ReceiveCommands(Agent a) { super(a); }
 
 	  public void action() {
 
